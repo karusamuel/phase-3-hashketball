@@ -127,3 +127,118 @@ def game_hash
 end
 
 # Write code here
+ 
+#code here hehe
+
+def num_points_scored(name)
+  game_hash[:home][:players].each do |player|
+    if player[:player_name] == name
+      return player[:points]
+    end
+  end
+
+  game_hash[:away][:players].each do |player|
+    if player[:player_name] == name
+      return player[:points]
+    end
+  end
+
+
+end
+
+
+def shoe_size(name)
+
+  game_hash[:home][:players].each do |player|
+    if player[:player_name] == name
+      return player[:shoe]
+    end
+  end
+
+  game_hash[:away][:players].each do |player|
+    if player[:player_name] == name
+      return player[:shoe]
+    end
+  end
+end
+
+def team_colors(name)
+
+  if game_hash[:home][:team_name] == name
+    return game_hash[:home][:colors]
+  else
+    return game_hash[:away][:colors]
+  end
+end
+
+def team_names ()
+  return [game_hash[:home][:team_name],game_hash[:away][:team_name]]
+
+end
+                                                                                                                       
+def player_numbers(team)
+
+
+playernumbers =[]
+if(game_hash[:home][:team_name] == team)
+  game_hash[:home][:players].each do |player|
+   
+      playernumbers.push(player[:number])
+
+  end
+else
+
+  game_hash[:away][:players].each do |player|
+
+      playernumbers.push(player[:number])
+
+  end
+end
+
+return playernumbers.sort
+
+end
+
+
+def player_stats(player_name)
+
+  game_hash[:home][:players].each do |player|
+    if player[:player_name] == player_name
+      return player
+    end
+  end
+
+  game_hash[:away][:players].each do |player|
+    if player[:player_name] == player_name
+      return player
+    end
+  end
+
+end
+
+def big_shoe_rebounds()
+  max_shoe_size = 0
+  biggest_shoe_player = nil
+
+  game_hash[:home][:players].each do |player|
+    if player[:shoe] > max_shoe_size
+        max_shoe_size = player[:shoe]
+        biggest_shoe_player = player
+    end
+  end
+
+  game_hash[:away][:players].each do |player|
+    if player[:shoe] > max_shoe_size
+      max_shoe_size = player[:shoe]
+      biggest_shoe_player = player
+    end
+  end
+  
+  return biggest_shoe_player[:rebounds]
+
+
+end
+
+
+
+
